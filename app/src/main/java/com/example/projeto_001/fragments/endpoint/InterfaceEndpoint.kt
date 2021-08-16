@@ -5,6 +5,6 @@ import retrofit2.Call
 import retrofit2.http.GET
 
 interface InterfaceEndpoint {
-    @GET("/api/v1/products.json")
+    @GET("/api/v1/products.json?brand=maybelline")
     fun buscarProdutos() : Call<List<Products>>
 }
