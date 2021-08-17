@@ -8,15 +8,16 @@ import android.view.ViewGroup
 import android.widget.Button
 import com.example.projeto_001.R
 import com.example.projeto_001.fragments.MainActivity
+import com.example.projeto_001.fragments.model.Navigation
 
-class LoginCorretoFragment : Fragment((R.layout.fragment_login_correto)) {
+class LoginCorretoFragment(private val interfaceNavigate: Navigation) : Fragment((R.layout.fragment_login_correto)) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         view.findViewById<Button>(R.id.buttonLogin)?.apply {
             setOnClickListener {
-                (requireActivity() as MainActivity).replaceFrag(ProductFragment())
+                interfaceNavigate.navigateTo(ProductFragment(interfaceNavigate))
             }
         }
     }

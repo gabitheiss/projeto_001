@@ -3,6 +3,7 @@ package com.example.projeto_001.fragments.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -10,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.example.projeto_001.R
 import com.example.projeto_001.fragments.model.Products
 
-class AdapterList(var listOfProducts: MutableList<Products>) :
+class AdapterList(var listOfProducts: MutableList<Products>, val onTap: (Products) -> Unit) :
     RecyclerView.Adapter<ItensProductsViewHolder>() {
 
 
@@ -24,6 +25,7 @@ class AdapterList(var listOfProducts: MutableList<Products>) :
     override fun onBindViewHolder(holder: ItensProductsViewHolder, position: Int) {
         listOfProducts[position].apply {
             holder.bind(this)
+            holder.buttonDetails.setOnClickListener { onTap(this) }
         }
     }
 
@@ -40,6 +42,8 @@ class AdapterList(var listOfProducts: MutableList<Products>) :
 }
 
 class ItensProductsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+    val buttonDetails = itemView.findViewById<Button>(R.id.buttonDetails)
 
     fun bind(products: Products) {
         itemView.findViewById<TextView>(R.id.idName)?.apply {
@@ -58,7 +62,7 @@ class ItensProductsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView
             text = products.tipo
         }
 
-        itemView.findViewById<TextView>(R.id.idCor)?.apply{
+        itemView.findViewById<TextView>(R.id.idCor)?.apply {
             text = products.cor?.firstOrNull()?.productColor
         }
 
