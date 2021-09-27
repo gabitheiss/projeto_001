@@ -64,7 +64,7 @@ class ProductFragment(private val interfaceNavigate: Navigation) :
 
     override fun onFailure(call: Call<List<Products>>, t: Throwable) {
 
-        println("falha")
+        println("falhou")
     }
 
 

@@ -22,5 +22,4 @@ class LoginCorretoFragment(private val interfaceNavigate: Navigation) : Fragment
         }
     }
 
-
 }
